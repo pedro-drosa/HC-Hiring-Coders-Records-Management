@@ -43,28 +43,6 @@ main {
     flex: 2 0 360px;
   }
 
-  .button {
-    margin: 0 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 32px;
-    height: 65px;
-    font-size: 1.125em;
-    font-weight: 700;
-    border-radius:5px;
-    background: $button-color;
-    color: $primary-text;
-    border: 0;
-    transition: background .3s;
-    text-decoration: none;
-    
-    &:hover {
-      background: $button-secondary-color;
-      color: $secondary-text;
-    }
-  }
-
   h1 {
     margin: 30px;
     color: #262628;

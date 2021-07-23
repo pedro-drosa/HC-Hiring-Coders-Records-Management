@@ -2,23 +2,39 @@ $primary-color: #10770e;
 $secondary-color: #0d5f0c;
 $text-color:#8b8b8b;
 
-.button {
-  font-size: 1em;
-  flex: 1;
-  height: 65px;
-  border-radius:5px;
-  font-weight: 700;
-  background: $primary-color;
-  color: #ebecf0;
-  padding: 0 32px;
-  margin-left: 5px;
+.btn-group {
   display: flex;
+  flex-wrap: wrap;
+  margin: 30px;
+}
+
+.btn {
+  margin: 5px;
+  text-transform: capitalize;
+  display: flex;
+  flex: 1 1 200px;
   justify-content: center;
   align-items: center;
+  padding: 0 32px;
+  height: 65px;
+  font-size: 1.125em;
+  font-weight: 700;
+  border-radius:5px;
+  background: $primary-color;
+  color: $text-color;
   border: 0;
   transition: background .3s;
   text-decoration: none;
-  
+
+  svg {
+    margin: 0 3px;
+  }
+}
+
+.btn-primary {
+  background: $primary-color;
+  color: #ebecf0;
+
   &:hover {
     background: $secondary-color;
     color: $text-color;

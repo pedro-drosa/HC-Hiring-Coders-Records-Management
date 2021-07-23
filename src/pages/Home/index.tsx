@@ -1,11 +1,19 @@
 import React from "react";
 
-import { FiCornerRightDown, FiGithub, FiLinkedin, FiSlack } from "react-icons/fi";
+import { 
+  FiCornerRightDown, 
+  FiGithub, 
+  FiLinkedin, 
+  FiSlack, 
+  FiUserPlus,
+  FiPackage
+} from "react-icons/fi";
 
 import controllerImg  from '../../assets/images/controller.jpg';
 import productImg  from '../../assets/images/product.jpg';
 
 import './style.scss';
+import '../../components/Button/style.scss';
 
 export const Home: React.FC = () => {
   return(
@@ -28,7 +36,10 @@ export const Home: React.FC = () => {
           <h2>Lorem, ipsum dolor.</h2>
           <h1>Lorem ipsum dolor sit amet.</h1>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio maiores quidem beatae facilis voluptate cum.</p>
-          <a className="button" href="#">See More</a>
+          <div className="btn-group">
+            <a className="btn btn-primary" href="#"><FiUserPlus/> customer</a>
+            <a className="btn btn-primary" href="#"><FiPackage/>product</a>
+          </div>
         </div>
       </main>
       <nav id="social">
