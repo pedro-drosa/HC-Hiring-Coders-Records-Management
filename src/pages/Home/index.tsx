@@ -3,7 +3,6 @@ import React from "react";
 import { FiCornerRightDown, FiGithub, FiLinkedin, FiSlack } from "react-icons/fi";
 
 import controllerImg  from '../../assets/images/controller.jpg';
-import googleImg  from '../../assets/images/google-logo.svg';
 import productImg  from '../../assets/images/product.jpg';
 
 import './style.scss';
@@ -35,24 +34,24 @@ export const Home: React.FC = () => {
       <nav id="social">
         <ul>
           <li>
-            <a href="#"><FiGithub /></a>
+            <a href="https://github.com/pedro-drosa"><FiGithub /></a>
           </li>
           <li>
-            <a href="#"><FiLinkedin /></a>
+            <a href="https://www.linkedin.com/in/pedrojuraci/"><FiLinkedin /></a>
           </li>
           <li>
-            <a href="#"><FiSlack /></a>
+            <a href="https://slack.com/intl/pt-br/"><FiSlack /></a>
           </li>
         </ul>
       </nav>
-      <section>
+      <section className="description">
         <div>
-          <h2>Best Sellers</h2>
+          <h2>Last added products</h2>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, sed rem dolor corporis consectetur adipisci.</p>
         </div>
         <FiCornerRightDown/>
       </section>
-      <aside>
+      <section className="products">
           <div>
             <a href="#"><img src={productImg} alt="product" /></a>
           </div>
@@ -60,9 +59,38 @@ export const Home: React.FC = () => {
             <a href="#"><img src={productImg} alt="product" /></a>
           </div>
           <div>
-          <a href="#"><img src={productImg} alt="product" /></a>
+            <a href="#"><img src={productImg} alt="product" /></a>
           </div>
-      </aside>
+      </section>
+      <section className="description">
+        <div>
+          <h2>Last added users</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, sed rem dolor corporis consectetur adipisci.</p>
+        </div>
+        <FiCornerRightDown/>
+      </section>
+      <section className="customers">
+        <dl>
+          <dt>Pedro Mascarenhas</dt>
+          <dd>asd@asd.com</dd>
+          <dd>25 anos, Barra Velha - SC</dd>
+        </dl>
+        <dl>
+          <dt>Pedro Mascarenhas</dt>
+          <dd>asd@asd.com</dd>
+          <dd>25 anos, Barra Velha - SC</dd>
+        </dl>
+        <dl>
+          <dt>Pedro Mascarenhas</dt>
+          <dd>asd@asd.com</dd>
+          <dd>25 anos, Barra Velha - SC</dd>
+        </dl>
+        <dl>
+          <dt>Pedro Mascarenhas</dt>
+          <dd>asd@asd.com</dd>
+          <dd>25 anos, Barra Velha - SC</dd>
+        </dl>
+      </section>
       <footer>
       <p>This project was created during the <a href="https://www.hiringcoders.com.br/">Hiring Coders</a> training,<br/> promoted by <a href="https://www.gama.academy/">Gama Academy</a> in partnership with <a href="https://vtex.com/br-pt/">V-Tex</a> <br/>and is under license from MIT.</p>
       </footer>

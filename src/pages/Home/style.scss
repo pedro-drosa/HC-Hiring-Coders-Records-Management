@@ -84,7 +84,7 @@ main {
   }
 }
 
-section {
+.description {
   display: flex;
   max-width: 960px;
   margin: 0 auto;
@@ -107,7 +107,7 @@ section {
   }
 }
 
-aside {
+.products {
   display: flex;
   flex-wrap: wrap;
   max-width: 960px;
@@ -115,15 +115,46 @@ aside {
   padding: 20px;
 
   &>div{
-    flex: 1 1 200px;
+    flex: 1 1 100px;
+    border: 1px solid $secondary-text;
     margin: 10px;
+  }
+}
+
+.customers {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+
+  dl {
+    flex: 1 1 400px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid $secondary-text;
+    border-radius: 5px;
+
+    dt {
+      margin-bottom: 10px;
+      font-size: 1.125em;
+      color: $primary-text;
+      font-weight: bold;
+    }
+
+    dd:nth-child(even) {
+      color: $button-color;
+    }
+    dd:nth-child(odd){
+      color: $secondary-text;
+    }
   }
 }
 
 #social {
   padding: 30px;
   max-width: 960px;
-  margin: 30px auto;
+  margin: 60px auto;
   
   svg {
     color: $primary-text;
@@ -156,6 +187,22 @@ footer {
 
     &:hover {
       color: $button-color;
+    }
+  }
+}
+
+@media(max-width:800px) {
+  main {
+    flex-direction: column;
+    h1 {
+      font-size: 3em;
+    }
+  }
+  header {
+    #brand {
+      a {
+        font-size:1.2em;
+      }
     }
   }
 }
