@@ -1,6 +1,6 @@
 import {ButtonHTMLAttributes} from 'react';
 
-import './styles.scss';
+import './style.scss';
 
 export const Button = (props:ButtonHTMLAttributes<HTMLButtonElement>) => {
   return <button {...props}>{props.children}</button>

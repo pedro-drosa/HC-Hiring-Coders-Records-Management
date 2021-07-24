@@ -1,0 +1,20 @@
+$primary-text: #fff;
+$secondary-text: #585858;
+$button-color: #10770e;
+$button-secondary-color: #0d5f0c;
+
+input {
+  color: $primary-text;
+  padding: 5px;
+  height: 45px;  
+  margin: 5px 30px;
+  border-radius: 5px;
+  border: 0;
+  background: $secondary-text;
+
+  &::placeholder {
+    font-size: 1.125em;
+    font-weight: 600;
+    text-align: center;
+  }
+}

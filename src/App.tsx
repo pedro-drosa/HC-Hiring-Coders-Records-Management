@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { Home } from './pages/Home';
+import { Products } from './pages/Products';
+// import { Home } from './pages/Home';
 // import { Dashboard } from './pages/Dashboard';
 
 const App:React.FC = () => {
   return (
-    <Home/>
+    <Products/>
   );
 }
 

@@ -1,0 +1,156 @@
+$primary-text: #fff;
+$secondary-text: #585858;
+$button-color: #10770e;
+$button-secondary-color: #0d5f0c;
+
+header {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 30px 0;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+
+  a {
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    color: $secondary-text;
+
+    svg {
+      margin: 0 3px
+    }
+    
+    &:hover {
+      color: $button-color;
+    }
+  }
+  
+  #brand {
+    a {
+      color: $primary-text;
+      font-size: 2.125em;
+      font-weight: 700;
+    }
+  }
+  nav {
+    ul {
+      list-style: none;
+      font-size: 1.125em;
+      font-weight: 600;
+    }
+  }
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+
+  h1 {
+    margin: 30px;
+    color: #262628;
+    font-size: 4em;
+    font-weight: 700;
+    max-width: 360px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: $primary-text;
+  }
+
+  h2, p {
+    margin: 30px;
+    color: $secondary-text;
+  }
+  h2{
+    color: $button-color;
+  }
+
+  form {
+    text-align: center;
+    flex: 1 1 460px;
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.description {
+  display: flex;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 30px;
+  align-items: flex-end;
+
+  h2{
+    color: $primary-text;
+    margin-bottom: 3px;
+  }
+
+  p{
+    max-width: 430px;
+    color: $secondary-text;
+  }
+
+  svg {
+    font-size: 1.5em;
+    color: $button-color;
+  }
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 960px;
+  margin: 60px auto;
+  padding: 20px;
+
+  &>div{
+    flex: 1 1 100px;
+    border: 1px solid $secondary-text;
+    margin: 10px;
+  }
+}
+
+
+
+
+
+footer {
+  color: $secondary-text;
+  max-width: 600px;
+  margin: 30px auto;
+  text-align: center;
+  a {
+    color: $secondary-text;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background .3s;
+
+    &:hover {
+      color: $button-color;
+    }
+  }
+}
+
+@media(max-width:800px) {
+  main {
+    flex-direction: column;
+    h1 {
+      font-size: 3em;
+    }
+
+    form {
+     width: 100%;
+    }
+  }
+  header {
+    #brand {
+      a {
+        font-size:1.2em;
+      }
+    }
+  }
+}
