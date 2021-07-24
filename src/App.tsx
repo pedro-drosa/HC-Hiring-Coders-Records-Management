@@ -1,12 +1,19 @@
 import React from 'react';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
-// import { Customers } from './pages/Customers';
-// import { Products } from './pages/Products';
 import { Home } from './pages/Home';
+import { Products } from './pages/Products';
+import { Customers } from './pages/Customers';
 
 const App:React.FC = () => {
   return (
-    <Home/>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/products" component={Products} />
+        <Route path="/customers" component={Customers} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 import { 
   FiCornerRightDown, 
@@ -19,11 +20,11 @@ export const Customers:React.FC = () => {
     <>
       <header>
         <div id="brand">
-          <a href="#"><FiTerminal/></a>
+          <a href="/customers"><FiTerminal/></a>
         </div>
         <nav>
           <ul>
-            <li><a href="#"><FiX/>Sair</a></li>
+            <li><Link to="/"><FiX/>Sair</Link></li>
           </ul>
         </nav>
       </header>

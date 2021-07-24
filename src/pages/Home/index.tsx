@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 import { 
   FiCornerRightDown, 
@@ -21,20 +22,20 @@ export const Home: React.FC = () => {
     <>
       <header>
         <div id="brand">
-          <a href="#"><FiTerminal/></a>
+          <a href="/"><FiTerminal/></a>
         </div>
       </header>
       <main>
         <div className="photo">
-          <img src={homeImg} alt="controller" />
+          <img src={homeImg} alt="page ilustration" />
         </div>
         <div>
           <h2>Simple and Objective</h2>
           <h1>Managing Products and Customers.</h1>
           <p>Product and customer management system, the system stores information in local storage. click the buttons and start managing your data.</p>
           <div className="btn-group">
-            <a className="btn btn-primary" href="#"><FiUserPlus/> customer</a>
-            <a className="btn btn-primary" href="#"><FiPackage/>product</a>
+            <Link className="btn btn-primary" to="/customers"><FiUserPlus/> customer</Link>
+            <Link className="btn btn-primary" to="/products"><FiPackage/>product</Link>
           </div>
         </div>
       </main>
