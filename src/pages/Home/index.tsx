@@ -17,6 +17,7 @@ import homeImg  from '../../assets/images/files.svg';
 import './style.scss';
 import '../../components/Button/style.scss';
 
+
 export const Home: React.FC = () => {
   return(
     <>
@@ -42,13 +43,13 @@ export const Home: React.FC = () => {
       <nav id="social">
         <ul>
           <li>
-            <a href="https://github.com/pedro-drosa"><FiGithub /></a>
+            <a href="https://github.com/pedro-drosa" rel="noopener noreferrer" target="_blank"><FiGithub /></a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/pedrojuraci/"><FiLinkedin /></a>
+            <a href="https://www.linkedin.com/in/pedrojuraci/" rel="noopener noreferrer" target="_blank"><FiLinkedin /></a>
           </li>
           <li>
-            <a href="https://slack.com/intl/pt-br/"><FiSlack /></a>
+            <a href="https://slack.com/intl/pt-br/" rel="noopener noreferrer" target="_blank"><FiSlack /></a>
           </li>
         </ul>
       </nav>

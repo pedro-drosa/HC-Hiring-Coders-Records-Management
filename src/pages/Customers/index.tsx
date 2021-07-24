@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import {Link} from 'react-router-dom';
 
 import { 
@@ -15,7 +15,67 @@ import { Button } from '../../components/Button';
 import './style.scss';
 import '../../components/Button/style.scss';
 
+import viacep from '../../services/viacep';
+
+interface Customer {
+  name: string;
+  email: string;
+  address: {
+    cep: string;
+    uf: string;
+    city: string;             
+  }
+}
+
+interface Address {
+  cep: string;
+  localidade: string;
+  uf: string;
+}
+
 export const Customers:React.FC = () => {
+
+  //Customer
+  const [customers, setCustomers] = useState<Customer[]>(() => {
+    const storageCustomers = localStorage.getItem('customers');
+    if(storageCustomers){
+      return JSON.parse(storageCustomers);
+    }
+    return [];
+  });
+
+  useEffect(()=>{
+    localStorage.setItem('customers', JSON.stringify(customers));
+  },[customers]);
+
+  //FormInputs
+  const [newName, setNewName] = useState<string>();
+  const [newEmail, setNewEmail] = useState<string>();
+  const [newCep, setNewCep] = useState<string>();
+
+  async function handleAddCustomer(event:FormEvent): Promise<void> {
+    event.preventDefault();
+
+    if (newName && newEmail && newCep) {
+      const response = await viacep.get<Address>(`${newCep}/json/`);
+      const address = response.data;
+
+      const newCustomer:Customer = {
+        name: newName,
+        email: newEmail,
+        address:{
+          cep: address.cep,
+          uf: address.uf,
+          city:address.localidade
+        }
+      };
+
+      setCustomers([...customers, newCustomer]);
+    }
+
+    localStorage.setItem('customers',JSON.stringify(customers));
+  }
+
   return(
     <>
       <header>
@@ -34,13 +94,25 @@ export const Customers:React.FC = () => {
           <h1>View and list all registered customers</h1>
           <p>you can add new customers via the form, they will remain saved in your local storage.</p>
         </div>
-        <form>
+        <form onSubmit={handleAddCustomer}>
           <h2>Customer Information</h2>
-          <Input type="text" placeholder="Customer Name"/>
-          <Input type="email" placeholder="customer@email.com"/>
-          <Input type="cep" placeholder="CEP"/>
+          <Input value={newName} 
+            onChange={(e) => {setNewName(e.target.value)}} 
+            type="text" 
+            placeholder="Customer Name"
+          />
+          <Input value={newEmail} 
+            onChange={(e) => {setNewEmail(e.target.value)}} 
+            type="email" 
+            placeholder="customer@email.com"
+          />
+          <Input value={newCep} 
+            onChange={(e) => {setNewCep(e.target.value)}} 
+            type="cep" 
+            placeholder="CEP"
+          />
           <div className="btn-group">
-            <Button className="btn btn-primary"><FiPlus/>Add</Button>
+            <Button className="btn btn-primary" type="submit"><FiPlus/>Add</Button>
           </div>
         </form>
       </main>
@@ -52,26 +124,17 @@ export const Customers:React.FC = () => {
         <FiCornerRightDown/>
       </section>
       <section className="customers">
-        <dl>
-          <dt>Pedro Mascarenhas</dt>
-          <dd>asd@asd.com</dd>
-          <dd>Barra Velha - SC</dd>
-        </dl>
-        <dl>
-          <dt>Pedro Mascarenhas</dt>
-          <dd>asd@asd.com</dd>
-          <dd>Barra Velha - SC</dd>
-        </dl>
-        <dl>
-          <dt>Pedro Mascarenhas</dt>
-          <dd>asd@asd.com</dd>
-          <dd>Barra Velha - SC</dd>
-        </dl>
-        <dl>
-          <dt>Pedro Mascarenhas</dt>
-          <dd>asd@asd.com</dd>
-          <dd>Barra Velha - SC</dd>
-        </dl>
+        {
+          customers.map((customer, index) => {
+            return(
+              <dl key={index}>
+                <dt>{customer.name}</dt>
+                <dd>{customer.email}</dd>
+                <dd>{`${customer.address.city},${customer.address.uf}`}</dd>
+              </dl>
+            )
+          })
+        }
       </section>
       <footer>
       <p>This project was created during the <a href="https://www.hiringcoders.com.br/">Hiring Coders</a> training,<br/> promoted by <a href="https://www.gama.academy/">Gama Academy</a> in partnership with <a href="https://vtex.com/br-pt/">V-Tex</a> <br/>and is under license from MIT.</p>
