@@ -4,14 +4,12 @@ import {
   FiCornerRightDown, 
   FiX,
   FiPlus,
-  FiTerminal
+  FiTerminal,
+  FiUsers
 } from "react-icons/fi";
 
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
-
-import productImg  from '../../assets/images/product.jpg';
-
 
 import './style.scss';
 import '../../components/Button/style.scss';
@@ -47,7 +45,7 @@ export const Customers:React.FC = () => {
       </main>
       <section className="description">
         <div>
-          <h2>Added Users</h2>
+          <h2><FiUsers/>Added Users</h2>
           <p>This section contains a list of all users registered in localstorage</p>
         </div>
         <FiCornerRightDown/>
@@ -56,22 +54,22 @@ export const Customers:React.FC = () => {
         <dl>
           <dt>Pedro Mascarenhas</dt>
           <dd>asd@asd.com</dd>
-          <dd>an exclusive product.</dd>
+          <dd>Barra Velha - SC</dd>
         </dl>
         <dl>
           <dt>Pedro Mascarenhas</dt>
           <dd>asd@asd.com</dd>
-          <dd>an exclusive product.</dd>
+          <dd>Barra Velha - SC</dd>
         </dl>
         <dl>
           <dt>Pedro Mascarenhas</dt>
           <dd>asd@asd.com</dd>
-          <dd>an exclusive product.</dd>
+          <dd>Barra Velha - SC</dd>
         </dl>
         <dl>
           <dt>Pedro Mascarenhas</dt>
           <dd>asd@asd.com</dd>
-          <dd>an exclusive product.</dd>
+          <dd>Barra Velha - SC</dd>
         </dl>
       </section>
       <footer>

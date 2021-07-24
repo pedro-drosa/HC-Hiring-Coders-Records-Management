@@ -6,11 +6,12 @@ import {
   FiLinkedin, 
   FiSlack, 
   FiUserPlus,
+  FiUsers,
+  FiTerminal,
   FiPackage
 } from "react-icons/fi";
 
-import controllerImg  from '../../assets/images/controller.jpg';
-import productImg  from '../../assets/images/product.jpg';
+import homeImg  from '../../assets/images/files.svg';
 
 import './style.scss';
 import '../../components/Button/style.scss';
@@ -20,22 +21,17 @@ export const Home: React.FC = () => {
     <>
       <header>
         <div id="brand">
-          <a href="#">Hiring-Coders</a>
+          <a href="#"><FiTerminal/></a>
         </div>
-        <nav>
-          <ul>
-            <li><a href="#">Products</a></li>
-          </ul>
-        </nav>
       </header>
       <main>
         <div className="photo">
-          <img src={controllerImg} alt="controller" />
+          <img src={homeImg} alt="controller" />
         </div>
         <div>
-          <h2>Lorem, ipsum dolor.</h2>
-          <h1>Lorem ipsum dolor sit amet.</h1>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio maiores quidem beatae facilis voluptate cum.</p>
+          <h2>Simple and Objective</h2>
+          <h1>Managing Products and Customers.</h1>
+          <p>Product and customer management system, the system stores information in local storage. click the buttons and start managing your data.</p>
           <div className="btn-group">
             <a className="btn btn-primary" href="#"><FiUserPlus/> customer</a>
             <a className="btn btn-primary" href="#"><FiPackage/>product</a>
@@ -57,30 +53,41 @@ export const Home: React.FC = () => {
       </nav>
       <section className="description">
         <div>
-          <h2>Last added products</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, sed rem dolor corporis consectetur adipisci.</p>
+          <h2><FiPackage/>Last Added Products</h2>
+          <p>This section contains a list of the latest products registered on the system. The list fetches data stored in local storage.</p>
         </div>
         <FiCornerRightDown/>
       </section>
-      <section className="products">
-          <div>
-            <a href="#"><img src={productImg} alt="product" /></a>
-          </div>
-          <div>
-            <a href="#"><img src={productImg} alt="product" /></a>
-          </div>
-          <div>
-            <a href="#"><img src={productImg} alt="product" /></a>
-          </div>
+      <section className="card">
+        <dl>
+          <dt>Xbox-One</dt>
+          <dd>$1000.00</dd>
+          <dd>an exclusive product.</dd>
+        </dl>
+        <dl>
+          <dt>Xbox-Series X</dt>
+          <dd>$1000.00</dd>
+          <dd>an exclusive product.</dd>
+        </dl>
+        <dl>
+          <dt>Controller X-Supreme</dt>
+          <dd>$1000.00</dd>
+          <dd>an exclusive product.</dd>
+        </dl>
+        <dl>
+          <dt>Gears of War</dt>
+          <dd>$1000.00</dd>
+          <dd>an exclusive product</dd>
+        </dl>
       </section>
       <section className="description">
         <div>
-          <h2>Last added users</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, sed rem dolor corporis consectetur adipisci.</p>
+          <h2><FiUsers/>Last Added Users</h2>
+          <p>This section contains a list of the last users registered on the system. The list fetches data stored in local storage</p>
         </div>
         <FiCornerRightDown/>
       </section>
-      <section className="customers">
+      <section className="card">
         <dl>
           <dt>Pedro Mascarenhas</dt>
           <dd>asd@asd.com</dd>

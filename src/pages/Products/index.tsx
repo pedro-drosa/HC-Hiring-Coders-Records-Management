@@ -4,14 +4,12 @@ import {
   FiCornerRightDown, 
   FiX,
   FiPlus,
-  FiTerminal
+  FiTerminal,
+  FiPackage
 } from "react-icons/fi";
 
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
-
-import productImg  from '../../assets/images/product.jpg';
-
 
 import './style.scss';
 import '../../components/Button/style.scss';
@@ -47,8 +45,8 @@ export const Products:React.FC = () => {
       </main>
       <section className="description">
         <div>
-          <h2>Added Products</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, sed rem dolor corporis consectetur adipisci.</p>
+          <h2><FiPackage/>Added Products</h2>
+          <p>This section contains a list of all products registered in localstorage</p>
         </div>
         <FiCornerRightDown/>
       </section>

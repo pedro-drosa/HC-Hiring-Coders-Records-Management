@@ -52,7 +52,7 @@ main {
   h1 {
     margin: 30px;
     color: #262628;
-    font-size: 4em;
+    font-size: 3.5em;
     font-weight: 700;
     max-width: 360px;
     -webkit-text-stroke-width: 1px;
@@ -85,8 +85,14 @@ main {
   align-items: flex-end;
 
   h2{
+    display: flex;
+    align-items: center;
     color: $primary-text;
     margin-bottom: 3px;
+
+    svg {
+      margin-right: 10px;
+    }
   }
 
   p{
