@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useState } from "react";
 import {Link} from 'react-router-dom';
 
 import { 
@@ -34,7 +34,7 @@ interface Product {
 }
 
 export const Home: React.FC = () => {
-  const [lastCustomers, setLastCustomers] = useState<Customer[]>(() => {
+  const [lastCustomers] = useState<Customer[]>(() => {
     const storageCustomers = JSON.parse(localStorage.getItem('customers') as string);
     if (storageCustomers) {
       return getLastItens(storageCustomers, 3);
@@ -42,7 +42,7 @@ export const Home: React.FC = () => {
     return [];
   });
 
-  const [lastProducts, setLastProducts] = useState<Product[]>(() => {
+  const [lastProducts] = useState<Product[]>(() => {
     const storageProducts = JSON.parse(localStorage.getItem('products') as string);
     if (storageProducts) {
       return getLastItens(storageProducts, 3);
