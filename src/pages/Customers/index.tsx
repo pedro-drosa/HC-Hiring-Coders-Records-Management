@@ -16,7 +16,7 @@ import productImg  from '../../assets/images/product.jpg';
 import './style.scss';
 import '../../components/Button/style.scss';
 
-export const Products:React.FC = () => {
+export const Customers:React.FC = () => {
   return(
     <>
       <header>
@@ -32,14 +32,14 @@ export const Products:React.FC = () => {
       <main>
         <div>
           <h2>Registration and Listing</h2>
-          <h1>View and list all registered products</h1>
-          <p>you can add new items via the form, they will remain saved in your local storage.</p>
+          <h1>View and list all registered customers</h1>
+          <p>you can add new customers via the form, they will remain saved in your local storage.</p>
         </div>
         <form>
-          <h2>Product Information</h2>
-          <Input type="text" placeholder="Product Name"/>
-          <Input type="text" placeholder="Description"/>
-          <Input type="text" placeholder="Price"/>
+          <h2>Customer Information</h2>
+          <Input type="text" placeholder="Customer Name"/>
+          <Input type="email" placeholder="customer@email.com"/>
+          <Input type="cep" placeholder="CEP"/>
           <div className="btn-group">
             <Button className="btn btn-primary"><FiPlus/>Add</Button>
           </div>
@@ -47,31 +47,31 @@ export const Products:React.FC = () => {
       </main>
       <section className="description">
         <div>
-          <h2>Added Products</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, sed rem dolor corporis consectetur adipisci.</p>
+          <h2>Added Users</h2>
+          <p>This section contains a list of all users registered in localstorage</p>
         </div>
         <FiCornerRightDown/>
       </section>
-      <section className="products">
+      <section className="customers">
         <dl>
-          <dt>Xbox-One</dt>
-          <dd>$1000.00</dd>
-          <dd>Barra Velha - SC</dd>
+          <dt>Pedro Mascarenhas</dt>
+          <dd>asd@asd.com</dd>
+          <dd>an exclusive product.</dd>
         </dl>
         <dl>
-          <dt>Xbox-Series X</dt>
-          <dd>$1000.00</dd>
-          <dd>Barra Velha - SC</dd>
+          <dt>Pedro Mascarenhas</dt>
+          <dd>asd@asd.com</dd>
+          <dd>an exclusive product.</dd>
         </dl>
         <dl>
-          <dt>Controller X-Supreme</dt>
-          <dd>$1000.00</dd>
-          <dd>Barra Velha - SC</dd>
+          <dt>Pedro Mascarenhas</dt>
+          <dd>asd@asd.com</dd>
+          <dd>an exclusive product.</dd>
         </dl>
         <dl>
-          <dt>Gears of War</dt>
-          <dd>$1000.00</dd>
-          <dd>Barra Velha - SC</dd>
+          <dt>Pedro Mascarenhas</dt>
+          <dd>asd@asd.com</dd>
+          <dd>an exclusive product.</dd>
         </dl>
       </section>
       <footer>
