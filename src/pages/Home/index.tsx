@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import {Link} from 'react-router-dom';
 
 import { 
@@ -17,8 +17,45 @@ import homeImg  from '../../assets/images/files.svg';
 import './style.scss';
 import '../../components/Button/style.scss';
 
+interface Customer {
+  name: string;
+  email: string;
+  address: {
+    cep: string;
+    uf: string;
+    city: string;             
+  }
+}
+
+interface Product {
+  name: string;
+  price: string;
+  description: string;
+}
 
 export const Home: React.FC = () => {
+  const [lastCustomers, setLastCustomers] = useState<Customer[]>(() => {
+    const storageCustomers = JSON.parse(localStorage.getItem('customers') as string);
+    if (storageCustomers) {
+      return getLastItens(storageCustomers, 3);
+    }
+    return [];
+  });
+
+  const [lastProducts, setLastProducts] = useState<Product[]>(() => {
+    const storageProducts = JSON.parse(localStorage.getItem('products') as string);
+    if (storageProducts) {
+      return getLastItens(storageProducts, 3);
+    }
+    return [];
+  });
+
+  function getLastItens(itens:Array<any>, range: number) {
+    return itens.reverse().filter((iten, index) => {
+      return index <= range;
+    })
+  }
+  
   return(
     <>
       <header>
@@ -61,26 +98,17 @@ export const Home: React.FC = () => {
         <FiCornerRightDown/>
       </section>
       <section className="card">
-        <dl>
-          <dt>Xbox-One</dt>
-          <dd>$1000.00</dd>
-          <dd>an exclusive product.</dd>
-        </dl>
-        <dl>
-          <dt>Xbox-Series X</dt>
-          <dd>$1000.00</dd>
-          <dd>an exclusive product.</dd>
-        </dl>
-        <dl>
-          <dt>Controller X-Supreme</dt>
-          <dd>$1000.00</dd>
-          <dd>an exclusive product.</dd>
-        </dl>
-        <dl>
-          <dt>Gears of War</dt>
-          <dd>$1000.00</dd>
-          <dd>an exclusive product</dd>
-        </dl>
+        {
+          lastProducts.map((product, index) => {
+            return(
+              <dl key={index}>
+                <dt>{product.name}</dt>
+                <dd>{product.price}</dd>
+                <dd>{product.description}</dd>
+              </dl>
+            );
+          })
+        }
       </section>
       <section className="description">
         <div>
@@ -90,26 +118,17 @@ export const Home: React.FC = () => {
         <FiCornerRightDown/>
       </section>
       <section className="card">
-        <dl>
-          <dt>Pedro Mascarenhas</dt>
-          <dd>asd@asd.com</dd>
-          <dd>25 anos, Barra Velha - SC</dd>
-        </dl>
-        <dl>
-          <dt>Pedro Mascarenhas</dt>
-          <dd>asd@asd.com</dd>
-          <dd>25 anos, Barra Velha - SC</dd>
-        </dl>
-        <dl>
-          <dt>Pedro Mascarenhas</dt>
-          <dd>asd@asd.com</dd>
-          <dd>25 anos, Barra Velha - SC</dd>
-        </dl>
-        <dl>
-          <dt>Pedro Mascarenhas</dt>
-          <dd>asd@asd.com</dd>
-          <dd>25 anos, Barra Velha - SC</dd>
-        </dl>
+        {
+          lastCustomers.map((customer, index) => {
+            return(
+              <dl>
+                <dt>{customer.name}</dt>
+                <dd>{customer.email}</dd>
+                <dd>{customer.address.city}, {customer.address.uf}</dd>
+              </dl>
+            )
+          })
+        }
       </section>
       <footer>
       <p>This project was created during the <a href="https://www.hiringcoders.com.br/">Hiring Coders</a> training,<br/> promoted by <a href="https://www.gama.academy/">Gama Academy</a> in partnership with <a href="https://vtex.com/br-pt/">V-Tex</a> <br/>and is under license from MIT.</p>
