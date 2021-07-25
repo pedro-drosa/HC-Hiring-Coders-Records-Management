@@ -51,9 +51,9 @@ export const Customers:React.FC = () => {
   },[customers]);
 
   //FormInputs
-  const [newName, setNewName] = useState<string>();
-  const [newEmail, setNewEmail] = useState<string>();
-  const [newCep, setNewCep] = useState<string>();
+  const [newName, setNewName] = useState<string>('');
+  const [newEmail, setNewEmail] = useState<string>('');
+  const [newCep, setNewCep] = useState<string>('');
 
   const schema = Yup.object().shape({
     name: Yup.string().required(),
@@ -95,6 +95,7 @@ export const Customers:React.FC = () => {
         };
         
         setCustomers([...customers, newCustomer]);
+        localStorage.setItem('customers',JSON.stringify(customers));
         
         //Clear input
         setNewName('');
@@ -105,7 +106,6 @@ export const Customers:React.FC = () => {
       }
     }
 
-    localStorage.setItem('customers',JSON.stringify(customers));
   }
 
   return(

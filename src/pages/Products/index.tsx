@@ -37,9 +37,9 @@ export const Products:React.FC = () => {
   },[products])
 
   //Input Values
-  const [newProductName, setNewProductName] = useState<string>();
-  const [newDescription, setNewDescription] = useState<string>();
-  const [newPrice, setNewPrice] = useState<string>();
+  const [newProductName, setNewProductName] = useState<string>('');
+  const [newDescription, setNewDescription] = useState<string>('');
+  const [newPrice, setNewPrice] = useState<string>('');
 
   const schema = Yup.object().shape({
     name: Yup.string().required(),
@@ -72,14 +72,13 @@ export const Products:React.FC = () => {
       } 
 
       setProducts([...products, newProduct]);
+      localStorage.setItem('products', JSON.stringify(products));
       
       //Clear input
       setNewProductName('');
       setNewPrice('');
       setNewDescription('');
     }
-
-    localStorage.setItem('products', JSON.stringify(products));
   }
 
   return(

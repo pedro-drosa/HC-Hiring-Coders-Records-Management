@@ -127,7 +127,7 @@ export const Home: React.FC = () => {
           lastCustomers.length > 0 ?
           lastCustomers.map((customer, index) => {
             return(
-              <dl>
+              <dl key={index}>
                 <dt>{customer.name}</dt>
                 <dd><FiMail/>{customer.email}</dd>
                 <dd><FiMapPin/>{customer.address.city}, {customer.address.uf}</dd>
