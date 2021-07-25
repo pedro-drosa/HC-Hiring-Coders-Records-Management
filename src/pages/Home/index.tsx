@@ -117,8 +117,8 @@ export const Home: React.FC = () => {
       </section>
       <section className="description">
         <div>
-          <h2><FiUsers/>Last Added Users</h2>
-          <p>This section contains a list of the last users registered on the system. The list fetches data stored in local storage</p>
+          <h2><FiUsers/>Last Added Customers</h2>
+          <p>This section contains a list of the last customers registered on the system. The list fetches data stored in local storage</p>
         </div>
         <FiCornerRightDown/>
       </section>

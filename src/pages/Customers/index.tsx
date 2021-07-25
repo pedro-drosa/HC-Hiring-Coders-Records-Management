@@ -150,8 +150,8 @@ export const Customers:React.FC = () => {
       </main>
       <section className="description">
         <div>
-          <h2><FiUsers/>Added Users</h2>
-          <p>This section contains a list of all users registered in localstorage</p>
+          <h2><FiUsers/>Added Customers</h2>
+          <p>This section contains a list of all customers registered in localstorage</p>
         </div>
         <FiCornerRightDown/>
       </section>
