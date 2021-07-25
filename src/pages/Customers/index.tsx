@@ -157,15 +157,16 @@ export const Customers:React.FC = () => {
       </section>
       <section className="customers">
         {
+          customers.length > 0 ?
           customers.map((customer, index) => {
             return(
               <dl key={index}>
                 <dt>{customer.name}</dt>
                 <dd><FiMail/>{customer.email}</dd>
                 <dd><FiMapPin/>{`${customer.address.city},${customer.address.uf}`}</dd>
-              </dl>
+              </dl> 
             )
-          })
+          }) : <h1 className="info">Ops, no customers registered :(</h1>
         }
       </section>
       <footer>

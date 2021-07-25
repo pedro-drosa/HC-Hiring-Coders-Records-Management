@@ -102,6 +102,7 @@ export const Home: React.FC = () => {
       </section>
       <section className="card">
         {
+          lastProducts.length > 0 ?
           lastProducts.map((product, index) => {
             return(
               <dl key={index}>
@@ -111,6 +112,7 @@ export const Home: React.FC = () => {
               </dl>
             );
           })
+          : <h1 className="info">Ops, no products registered :(</h1>
         }
       </section>
       <section className="description">
@@ -122,6 +124,7 @@ export const Home: React.FC = () => {
       </section>
       <section className="card">
         {
+          lastCustomers.length > 0 ?
           lastCustomers.map((customer, index) => {
             return(
               <dl>
@@ -130,7 +133,7 @@ export const Home: React.FC = () => {
                 <dd><FiMapPin/>{customer.address.city}, {customer.address.uf}</dd>
               </dl>
             )
-          })
+          }) : <h1 className="info">Ops, no items registered :(</h1>
         }
       </section>
       <footer>

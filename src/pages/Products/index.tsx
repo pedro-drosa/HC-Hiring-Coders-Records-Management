@@ -131,6 +131,7 @@ export const Products:React.FC = () => {
       </section>
       <section className="products">
         {
+          products.length > 0 ?
           products.map((product, index) => {
             return(
               <dl key={index}>
@@ -139,7 +140,7 @@ export const Products:React.FC = () => {
                 <dd><FiInfo/>{product.description}</dd>
               </dl>
             );
-          })
+          }) : <h1 className="info">Ops, no customers registered :(</h1>
         }
       </section>
       <footer>
