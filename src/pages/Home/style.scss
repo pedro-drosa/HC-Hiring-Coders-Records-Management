@@ -39,8 +39,9 @@ main {
   align-items: center;
 
   .photo {
+    align-self: center;
     margin: 0 30px;
-    flex: 2 0 200px;
+    flex: 2 0 260px;
   }
 
   h1 {
@@ -161,11 +162,11 @@ footer {
   }
 }
 
-// @media(max-width:800px) {
-//   main {
-//     flex-direction: column;
-//     h1 {
-//       font-size: 3em;
-//     }
-//   }
-// }
+@media(max-width:800px) {
+  main {
+    .photo {
+      align-self: center;
+      width: 60%;
+    }
+  }
+}
