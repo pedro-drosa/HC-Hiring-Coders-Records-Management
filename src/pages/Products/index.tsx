@@ -1,5 +1,6 @@
 import React, { FormEvent, useState, useEffect } from "react";
 import {Link} from 'react-router-dom';
+import * as Yup from 'yup';
 
 import { 
   FiCornerRightDown, 
@@ -39,9 +40,25 @@ export const Products:React.FC = () => {
   const [newDescription, setNewDescription] = useState<string>();
   const [newPrice, setNewPrice] = useState<string>();
 
-  function handleAddProduct(event:FormEvent) {
+  const schema = Yup.object().shape({
+    name: Yup.string().required(),
+    price: Yup.string().matches(/^\d+(,\d{1,2})?$/).required(),
+    description: Yup.string().required(),
+  });
+
+  async function handleAddProduct(event:FormEvent) {
     event.preventDefault();
     
+    if(newProductName?.trim() === ''){
+      console.error('validation error')
+      return;
+    }
+
+    if(!(await schema.isValid({name: newProductName, price: newPrice, description: newDescription}))){
+      console.error('validation error')
+      return;
+    }
+
     //Convert Price
     const rawPrice = newPrice?.replace(/[,.]/g, ".") as string;
     const parsedPrice = parseFloat(rawPrice).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
@@ -86,13 +103,13 @@ export const Products:React.FC = () => {
           />
           <Input value={newPrice}
             onChange={e => setNewPrice(e.target.value)}
-            type="text" 
-            placeholder="Price"
+            type="text"
+            placeholder="Enter a price"
           />
           <Input value={newDescription} 
             onChange={e => setNewDescription(e.target.value)}
             type="text" 
-            placeholder="Description"
+            placeholder="Enter a description"
           />
           <div className="btn-group">
             <Button type="submit" className="btn btn-primary"><FiPlus/>Add</Button>
@@ -110,7 +127,7 @@ export const Products:React.FC = () => {
         {
           products.map((product, index) => {
             return(
-              <dl>
+              <dl key={index}>
                 <dt>{product.name}</dt>
                 <dd>{product.price}</dd>
                 <dd>{product.description}</dd>

@@ -1,5 +1,6 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import {Link} from 'react-router-dom';
+import * as Yup from 'yup';
 
 import { 
   FiCornerRightDown, 
@@ -31,11 +32,10 @@ interface Address {
   cep: string;
   localidade: string;
   uf: string;
+  erro?:boolean;
 }
 
 export const Customers:React.FC = () => {
-
-  //Customer
   const [customers, setCustomers] = useState<Customer[]>(() => {
     const storageCustomers = localStorage.getItem('customers');
     if(storageCustomers){
@@ -53,24 +53,49 @@ export const Customers:React.FC = () => {
   const [newEmail, setNewEmail] = useState<string>();
   const [newCep, setNewCep] = useState<string>();
 
+  const schema = Yup.object().shape({
+    name: Yup.string().required(),
+    email: Yup.string().required().email(),
+    cep: Yup.string().length(8).required(),
+  });
+  
   async function handleAddCustomer(event:FormEvent): Promise<void> {
     event.preventDefault();
+    
+    if (newName?.trim() === '') {
+      console.error('validation error')
+      return;
+    }
+
+    if(!(await schema.isValid({ name: newName, email: newEmail, cep:newCep }))) {
+      console.error('validation error')
+      return;
+    }
 
     if (newName && newEmail && newCep) {
-      const response = await viacep.get<Address>(`${newCep}/json/`);
-      const address = response.data;
+      try {
+        const response = await viacep.get<Address>(`${newCep}/json/`);
+        const address = response.data;
 
-      const newCustomer:Customer = {
-        name: newName,
-        email: newEmail,
-        address:{
-          cep: address.cep,
-          uf: address.uf,
-          city:address.localidade
+        if(response.data.erro){
+          console.error('cep error')
+          return;
         }
-      };
-
-      setCustomers([...customers, newCustomer]);
+        
+        const newCustomer:Customer = {
+          name: newName,
+          email: newEmail,
+          address:{
+            cep: address.cep,
+            uf: address.uf,
+            city:address.localidade
+          }
+        };
+        
+        setCustomers([...customers, newCustomer]);
+      } catch (error) {
+        console.error('validation error')
+      }
     }
 
     localStorage.setItem('customers',JSON.stringify(customers));
@@ -108,8 +133,8 @@ export const Customers:React.FC = () => {
           />
           <Input value={newCep} 
             onChange={(e) => {setNewCep(e.target.value)}} 
-            type="cep" 
-            placeholder="CEP"
+            type="text" 
+            placeholder="Enter the zip code"
           />
           <div className="btn-group">
             <Button className="btn btn-primary" type="submit"><FiPlus/>Add</Button>
