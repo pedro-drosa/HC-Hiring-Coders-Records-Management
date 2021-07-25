@@ -113,6 +113,15 @@ main {
       font-weight: bold;
     }
 
+    dd {
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin: 5px 10px 5px 0;
+      }
+    }
+
     dd:nth-child(even) {
       color: $button-color;
     }

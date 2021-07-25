@@ -121,10 +121,20 @@ main {
     border-radius: 5px;
 
     dt {
+      display: flex;
       margin-bottom: 10px;
       font-size: 1.125em;
       color: $primary-text;
       font-weight: bold;
+    }
+
+    dd {
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin: 5px 10px 5px 0;
+      }
     }
 
     dd:nth-child(even) {

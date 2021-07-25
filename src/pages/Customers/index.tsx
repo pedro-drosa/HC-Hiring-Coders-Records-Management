@@ -7,7 +7,9 @@ import {
   FiX,
   FiPlus,
   FiTerminal,
-  FiUsers
+  FiUsers,
+  FiMail,
+  FiMapPin,
 } from "react-icons/fi";
 
 import { Input } from '../../components/Input';
@@ -93,6 +95,11 @@ export const Customers:React.FC = () => {
         };
         
         setCustomers([...customers, newCustomer]);
+        
+        //Clear input
+        setNewName('');
+        setNewEmail('');
+        setNewCep('');
       } catch (error) {
         console.error('validation error')
       }
@@ -154,8 +161,8 @@ export const Customers:React.FC = () => {
             return(
               <dl key={index}>
                 <dt>{customer.name}</dt>
-                <dd>{customer.email}</dd>
-                <dd>{`${customer.address.city},${customer.address.uf}`}</dd>
+                <dd><FiMail/>{customer.email}</dd>
+                <dd><FiMapPin/>{`${customer.address.city},${customer.address.uf}`}</dd>
               </dl>
             )
           })

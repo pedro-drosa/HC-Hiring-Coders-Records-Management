@@ -7,7 +7,8 @@ import {
   FiX,
   FiPlus,
   FiTerminal,
-  FiPackage
+  FiPackage,
+  FiInfo
 } from "react-icons/fi";
 
 import { Input } from '../../components/Input';
@@ -71,6 +72,11 @@ export const Products:React.FC = () => {
       } 
 
       setProducts([...products, newProduct]);
+      
+      //Clear input
+      setNewProductName('');
+      setNewPrice('');
+      setNewDescription('');
     }
 
     localStorage.setItem('products', JSON.stringify(products));
@@ -130,7 +136,7 @@ export const Products:React.FC = () => {
               <dl key={index}>
                 <dt>{product.name}</dt>
                 <dd>{product.price}</dd>
-                <dd>{product.description}</dd>
+                <dd><FiInfo/>{product.description}</dd>
               </dl>
             );
           })

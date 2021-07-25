@@ -4,8 +4,10 @@ $button-color: #10770e;
 $button-secondary-color: #0d5f0c;
 
 input {
+  font-size: 1.125em;
+  font-weight: 600;
   color: $primary-text;
-  padding: 5px;
+  padding: 20px;
   height: 45px;  
   margin: 5px 30px;
   border-radius: 5px;

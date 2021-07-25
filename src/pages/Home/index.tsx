@@ -9,7 +9,10 @@ import {
   FiUserPlus,
   FiUsers,
   FiTerminal,
-  FiPackage
+  FiPackage,
+  FiMail,
+  FiMapPin,
+  FiInfo,
 } from "react-icons/fi";
 
 import homeImg  from '../../assets/images/files.svg';
@@ -104,7 +107,7 @@ export const Home: React.FC = () => {
               <dl key={index}>
                 <dt>{product.name}</dt>
                 <dd>{product.price}</dd>
-                <dd>{product.description}</dd>
+                <dd><FiInfo/>{product.description}</dd>
               </dl>
             );
           })
@@ -123,8 +126,8 @@ export const Home: React.FC = () => {
             return(
               <dl>
                 <dt>{customer.name}</dt>
-                <dd>{customer.email}</dd>
-                <dd>{customer.address.city}, {customer.address.uf}</dd>
+                <dd><FiMail/>{customer.email}</dd>
+                <dd><FiMapPin/>{customer.address.city}, {customer.address.uf}</dd>
               </dl>
             )
           })
