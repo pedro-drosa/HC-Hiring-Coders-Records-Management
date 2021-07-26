@@ -133,7 +133,7 @@ export const Home: React.FC = () => {
                 <dd><FiMapPin/>{customer.address.city}, {customer.address.uf}</dd>
               </dl>
             )
-          }) : <h1 className="info">Ops, no items registered :(</h1>
+          }) : <h1 className="info">Ops, no customers registered :(</h1>
         }
       </section>
       <footer>

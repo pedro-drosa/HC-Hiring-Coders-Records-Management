@@ -1,6 +1,8 @@
 import React, { FormEvent, useState, useEffect } from "react";
 import {Link} from 'react-router-dom';
 import * as Yup from 'yup';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { 
   FiCornerRightDown, 
@@ -49,14 +51,16 @@ export const Products:React.FC = () => {
 
   async function handleAddProduct(event:FormEvent) {
     event.preventDefault();
-    
+    const notifySuccess = () => toast.success("Product successfully added.", {toastId : 'product'});
+    const notifyError = () => toast.error("Error registering the product, please check the data and try again.", {toastId : 'product'});
+
     if(newProductName?.trim() === ''){
-      console.error('validation error')
+      notifyError();
       return;
     }
 
     if(!(await schema.isValid({name: newProductName, price: newPrice, description: newDescription}))){
-      console.error('validation error')
+      notifyError();
       return;
     }
 
@@ -73,6 +77,7 @@ export const Products:React.FC = () => {
 
       setProducts([...products, newProduct]);
       localStorage.setItem('products', JSON.stringify(products));
+      notifySuccess();
       
       //Clear input
       setNewProductName('');
@@ -117,6 +122,7 @@ export const Products:React.FC = () => {
             placeholder="Enter a description"
           />
           <div className="btn-group">
+            <ToastContainer/>
             <Button type="submit" className="btn btn-primary"><FiPlus/>Add</Button>
           </div>
         </form>

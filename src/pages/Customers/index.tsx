@@ -1,6 +1,8 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import {Link} from 'react-router-dom';
 import * as Yup from 'yup';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { 
   FiCornerRightDown, 
@@ -63,14 +65,16 @@ export const Customers:React.FC = () => {
   
   async function handleAddCustomer(event:FormEvent): Promise<void> {
     event.preventDefault();
+    const notifySuccess = () => toast.success("Customer successfully added.", {toastId : 'customer'});
+    const notifyError = () => toast.error("Error registering customer, check data and try again.", {toastId : 'customer'});
     
     if (newName?.trim() === '') {
-      console.error('validation error')
+      notifyError();
       return;
     }
 
     if(!(await schema.isValid({ name: newName, email: newEmail, cep:newCep }))) {
-      console.error('validation error')
+      notifyError();
       return;
     }
 
@@ -80,7 +84,7 @@ export const Customers:React.FC = () => {
         const address = response.data;
 
         if(response.data.erro){
-          console.error('cep error')
+          notifyError();
           return;
         }
         
@@ -96,13 +100,14 @@ export const Customers:React.FC = () => {
         
         setCustomers([...customers, newCustomer]);
         localStorage.setItem('customers',JSON.stringify(customers));
+        notifySuccess();
         
         //Clear input
         setNewName('');
         setNewEmail('');
         setNewCep('');
       } catch (error) {
-        console.error('validation error')
+        notifyError();
       }
     }
 
@@ -144,6 +149,7 @@ export const Customers:React.FC = () => {
             placeholder="Enter the zip code"
           />
           <div className="btn-group">
+            <ToastContainer/>
             <Button className="btn btn-primary" type="submit"><FiPlus/>Add</Button>
           </div>
         </form>
