@@ -13,7 +13,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [TypeScript](https://www.typescriptlang.org/)
 
 ## 💻 Projeto
-Minha solução para o segundo desafio.
+Minha solução para o segundo desafio: Criar um sistema para cadastro de clientes e produtos.<br/>
 Este projeto foi desenvolvido durante o treinamento [Hiring Coders](https://www.hiringcoders.com.br/),
 promovido pela [Gama Academy](https://www.gama.academy/") em parceria com a [V-Tex](https://vtex.com/br-pt/).
 
